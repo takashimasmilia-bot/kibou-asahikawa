@@ -266,7 +266,7 @@ def build_html_page(title: str, body_html: str, date_display: str,
           </p>
           <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:20px;">
             <a href="/contact" class="btn btn-primary btn-lg">📩 無料相談フォーム</a>
-            <a href="tel:0166000000" class="btn btn-secondary btn-lg">📞 0166-XX-XXXX</a>
+            <a href="tel:0166548388" class="btn btn-secondary btn-lg">📞 0166-54-8388</a>
           </div>
         </div>
 
@@ -285,7 +285,7 @@ def build_html_page(title: str, body_html: str, date_display: str,
           <div class="footer-company">旭川市 住宅型有料老人ホーム</div>
           <address class="footer-address" style="font-style:normal;">
             北海道旭川市<br>
-            TEL：0166-XX-XXXX<br>
+            TEL：0166-54-8388<br>
             受付時間：9:00〜18:00
           </address>
         </div>

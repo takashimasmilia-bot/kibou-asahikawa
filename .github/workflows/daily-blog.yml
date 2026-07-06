@@ -1,0 +1,40 @@
+name: Daily Blog Post
+
+on:
+  schedule:
+    # 毎日 JST 9:00 に実行 (UTC 0:00)
+    - cron: '0 0 * * *'
+  # GitHubの画面から手動実行も可能
+  workflow_dispatch:
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python のセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 依存パッケージをインストール
+        run: pip install anthropic
+
+      - name: ブログ記事を生成
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/generate_post.py
+
+      - name: GitHubにコミット & プッシュ
+        run: |
+          git config user.name  "takashimasmilia-bot"
+          git config user.email "takashima.smilia@gmail.com"
+          git add posts/ posts.json sitemap.xml
+          git diff --cached --quiet && echo "変更なし" || \
+            git commit -m "ブログ記事を追加 $(date +%Y-%m-%d)"
+          git push

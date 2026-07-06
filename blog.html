@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="旭川市の住宅型有料老人ホーム「きぼう」のブログ。介護保険・施設選び・日々の暮らし・ご家族へのお役立ち情報をお届けします。">
+  <title>介護のお役立ち情報 | 合同会社きぼう（旭川）</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="介護のお役立ち情報｜合同会社きぼう（旭川）">
+  <meta property="og:description" content="介護保険・施設選び・日々の暮らし・ご家族へのお役立ち情報をお届けします。">
+  <meta property="og:url" content="https://kibou.online/blog">
+  <meta property="og:site_name" content="合同会社きぼう">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="canonical" href="https://kibou.online/blog">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="合同会社きぼう トップへ">
+        <span class="logo-sub">旭川市 住宅型有料老人ホーム</span>
+        <span class="logo-main">合同会社<span>きぼう</span></span>
+      </a>
+      <nav class="nav" aria-label="グローバルナビゲーション">
+        <ul class="nav-links">
+          <li><a href="/"        class="nav-link">トップ</a></li>
+          <li><a href="/urara"   class="nav-link">うらら</a></li>
+          <li><a href="/celavie" class="nav-link">セラヴィ豊岡</a></li>
+          <li><a href="/blog"    class="nav-link active">ブログ</a></li>
+          <li><a href="/recruit" class="nav-link">求人</a></li>
+          <li><a href="/contact" class="nav-link">お問い合わせ</a></li>
+        </ul>
+        <a href="/contact" class="btn btn-primary nav-cta">入居相談（無料）</a>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="/"        class="mobile-nav-link">🏠 トップ</a></li>
+      <li><a href="/urara"   class="mobile-nav-link">🌸 うらら</a></li>
+      <li><a href="/celavie" class="mobile-nav-link">🌿 セラヴィ豊岡</a></li>
+      <li><a href="/blog"    class="mobile-nav-link">📝 ブログ</a></li>
+      <li><a href="/recruit" class="mobile-nav-link">💼 求人</a></li>
+      <li><a href="/contact" class="mobile-nav-link">✉️ お問い合わせ</a></li>
+    </ul>
+    <a href="/contact" class="btn btn-primary mobile-nav-cta">入居相談（無料）</a>
+  </div>
+
+  <main>
+
+    <div class="notice-bar">
+      <div class="notice-bar-inner">
+        <span class="notice-bar-text">📢 入居相談・見学は随時受け付けています。お気軽にお問い合わせください。</span>
+        <a href="/contact" class="notice-bar-cta">お問い合わせ →</a>
+      </div>
+    </div>
+
+    <div class="page-hero">
+      <div class="page-hero-content">
+        <p class="page-hero-breadcrumb"><a href="/">トップ</a> &gt; ブログ</p>
+        <h1 class="page-hero-title">介護のお役立ち情報</h1>
+        <p class="page-hero-subtitle">介護保険・施設選び・日々の暮らし・ご家族へのアドバイスをお届けします。</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="filter-row fade-in">
+          <button class="filter-btn active" data-category="all">すべて</button>
+          <button class="filter-btn" data-category="care">🤝 介護のこと</button>
+          <button class="filter-btn" data-category="facility">🏠 施設について</button>
+          <button class="filter-btn" data-category="insurance">📋 介護保険</button>
+          <button class="filter-btn" data-category="family">👪 ご家族へ</button>
+        </div>
+
+        <div class="blog-grid" id="blogGrid">
+          <div style="text-align:center;padding:60px 0;color:var(--text-muted);grid-column:1/-1;">
+            読み込み中...
+          </div>
+        </div>
+
+        <div id="blogLoadMore" style="text-align:center;margin-top:48px;display:none;" class="fade-in">
+          <button class="btn btn-secondary btn-lg" id="loadMoreBtn">もっと見る</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section bg-green">
+      <div class="container">
+        <div style="text-align:center;" class="fade-in">
+          <p class="section-label">CONTACT</p>
+          <h2 class="section-title">ご相談・見学は無料です</h2>
+          <p class="section-subtitle" style="margin:0 auto 32px;">記事を読んで気になったことがあれば、お気軽にお問い合わせください。</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+            <a href="/contact" class="btn btn-primary btn-lg">📩 お問い合わせ</a>
+            <a href="tel:0166000000" class="btn btn-secondary btn-lg">📞 0166-XX-XXXX</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">合同会社<span>きぼう</span></div>
+          <div class="footer-company">旭川市 住宅型有料老人ホーム</div>
+          <address class="footer-address" style="font-style:normal;">
+            北海道旭川市<br>
+            TEL：0166-XX-XXXX<br>
+            受付時間：9:00〜18:00
+          </address>
+        </div>
+        <div>
+          <div class="footer-nav-title">サイトマップ</div>
+          <ul class="footer-nav-links">
+            <li><a href="/"        class="footer-nav-link">トップページ</a></li>
+            <li><a href="/urara"   class="footer-nav-link">うらら</a></li>
+            <li><a href="/celavie" class="footer-nav-link">セラヴィ豊岡</a></li>
+            <li><a href="/blog"    class="footer-nav-link">ブログ</a></li>
+            <li><a href="/recruit" class="footer-nav-link">求人</a></li>
+            <li><a href="/contact" class="footer-nav-link">お問い合わせ</a></li>
+          </ul>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">代表の別事業</div>
+            <a href="https://smilia.jp/" target="_blank" rel="noopener" style="font-size:0.82rem;color:rgba(255,255,255,0.6);">
+              ハウスドゥ澄川（合同会社スミリア）→
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 合同会社きぼう All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  (function () {
+    const CAT = {
+      care:      { label: '介護のこと',  cls: 'badge-green',  bg: 'linear-gradient(135deg,#E8F4EE,#D0E8D8)', icon: '🤝' },
+      facility:  { label: '施設について', cls: 'badge-blue',   bg: 'linear-gradient(135deg,#EBF0F8,#D4DDEF)', icon: '🏠' },
+      insurance: { label: '介護保険',    cls: 'badge-orange', bg: 'linear-gradient(135deg,#FBF4E0,#F5E4C0)', icon: '📋' },
+      family:    { label: 'ご家族へ',    cls: 'badge-beige',  bg: 'linear-gradient(135deg,#F8F5F0,#EDE8E0)', icon: '👪' },
+    };
+    const PER_PAGE = 9;
+    let allPosts = [], currentCategory = 'all', shown = 0;
+
+    function buildCard(p) {
+      const c = CAT[p.category] || CAT.care;
+      const link = p.url
+        ? `<a href="${p.url}" class="blog-card-link">続きを読む →</a>`
+        : '';
+      return `<article class="blog-card" data-category="${p.category || 'care'}">
+        <div class="blog-card-img" style="background:${c.bg};">${c.icon}</div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="badge ${c.cls}">${c.label}</span>
+            <span class="blog-card-date">${p.date}</span>
+          </div>
+          <h2 class="blog-card-title">${p.title}</h2>
+          <p class="blog-card-excerpt">${p.excerpt}</p>
+          ${link}
+        </div>
+      </article>`;
+    }
+
+    function filtered() {
+      return currentCategory === 'all'
+        ? allPosts
+        : allPosts.filter(p => p.category === currentCategory);
+    }
+
+    function render(reset) {
+      const grid = document.getElementById('blogGrid');
+      const list = filtered();
+      if (reset) { grid.innerHTML = ''; shown = 0; }
+      const next = list.slice(shown, shown + PER_PAGE);
+      if (!next.length && shown === 0) {
+        grid.innerHTML = '<p style="text-align:center;padding:40px;color:var(--text-muted);grid-column:1/-1;">記事がありません</p>';
+      } else {
+        grid.insertAdjacentHTML('beforeend', next.map(buildCard).join(''));
+      }
+      shown += next.length;
+      const btn = document.getElementById('blogLoadMore');
+      btn.style.display = shown < list.length ? 'block' : 'none';
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentCategory = this.dataset.category;
+        render(true);
+      });
+    });
+
+    document.getElementById('loadMoreBtn').addEventListener('click', () => render(false));
+
+    fetch('posts.json')
+      .then(r => r.json())
+      .then(data => { allPosts = data; render(true); })
+      .catch(() => {
+        document.getElementById('blogGrid').innerHTML =
+          '<p style="text-align:center;padding:40px;color:var(--text-muted);grid-column:1/-1;">記事の読み込みに失敗しました。</p>';
+      });
+  })();
+  </script>
+
+</body>
+</html>

@@ -90,7 +90,7 @@ scrollTopBtn.addEventListener('click', () => {
 });
 
 // Contact form — Formspree
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_KIBOU_FORM_ID';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeebwrpz';
 
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {

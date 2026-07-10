@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://kibou-asahikawa.com/about</loc>
-    <lastmod>2026-07-10</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -32,14 +32,20 @@
   </url>
   <url>
     <loc>https://kibou-asahikawa.com/recruit</loc>
-    <lastmod>2026-07-10</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kibou-asahikawa.com/contact</loc>
-    <lastmod>2026-07-10</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kibou-asahikawa.com/posts/2026-07-10-介護保険-1割負担-2割負担-サービス.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>never</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
@@ -56,7 +62,7 @@
   </url>
   <url>
     <loc>https://kibou-asahikawa.com/posts/2026-07-07-旭川-老人ホーム-種類-費用-比較-選び.html</loc>
-    <lastmod>2026-07-10</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>never</changefreq>
     <priority>0.6</priority>
   </url>

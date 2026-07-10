@@ -162,7 +162,7 @@ def build_html_page(title: str, body_html: str, date_display: str,
 
     body = re.sub(r"<h1[^>]*>.*?</h1>", "", body_html, flags=re.DOTALL).strip()
 
-    canonical_url = f"https://kibou.online/posts/{slug}.html" if slug else ""
+    canonical_url = f"https://kibou-asahikawa.com/posts/{slug}.html" if slug else ""
     desc = excerpt if excerpt else f"{title}｜合同会社きぼうの介護コラム"
 
     return f"""<!DOCTYPE html>
@@ -191,12 +191,12 @@ def build_html_page(title: str, body_html: str, date_display: str,
     "author": {{
       "@type": "Organization",
       "name": "合同会社きぼう",
-      "url": "https://kibou.online/"
+      "url": "https://kibou-asahikawa.com/"
     }},
     "publisher": {{
       "@type": "Organization",
       "name": "合同会社きぼう",
-      "url": "https://kibou.online/"
+      "url": "https://kibou-asahikawa.com/"
     }},
     "url": "{canonical_url}"
   }}
@@ -325,13 +325,13 @@ def build_html_page(title: str, body_html: str, date_display: str,
 def update_sitemap(posts: list, base: Path, today_str: str = "") -> None:
     today = today_str or datetime.date.today().isoformat()
     static_urls = [
-        ("https://kibou.online/",        today,        "weekly",  "1.0"),
-        ("https://kibou.online/urara",   today,        "monthly", "0.9"),
-        ("https://kibou.online/celavie", today,        "monthly", "0.9"),
-        ("https://kibou.online/about",   "2026-07-05", "monthly", "0.7"),
-        ("https://kibou.online/blog",    today,        "weekly",  "0.7"),
-        ("https://kibou.online/recruit", "2026-07-05", "monthly", "0.6"),
-        ("https://kibou.online/contact", "2026-07-05", "monthly", "0.6"),
+        ("https://kibou-asahikawa.com/",        today,        "weekly",  "1.0"),
+        ("https://kibou-asahikawa.com/urara",   today,        "monthly", "0.9"),
+        ("https://kibou-asahikawa.com/celavie", today,        "monthly", "0.9"),
+        ("https://kibou-asahikawa.com/about",   "2026-07-05", "monthly", "0.7"),
+        ("https://kibou-asahikawa.com/blog",    today,        "weekly",  "0.7"),
+        ("https://kibou-asahikawa.com/recruit", "2026-07-05", "monthly", "0.6"),
+        ("https://kibou-asahikawa.com/contact", "2026-07-05", "monthly", "0.6"),
     ]
     entries = []
     for loc, lastmod, changefreq, priority in static_urls:
@@ -341,7 +341,7 @@ def update_sitemap(posts: list, base: Path, today_str: str = "") -> None:
         )
     for post in posts:
         if post.get("url"):
-            loc = f"https://kibou.online/{post['url']}"
+            loc = f"https://kibou-asahikawa.com/{post['url']}"
             lastmod = post.get("dateISO", "2026-07-05")
             entries.append(
                 f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n"

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kibou.online/sitemap.xml
+Sitemap: https://kibou-asahikawa.com/sitemap.xml

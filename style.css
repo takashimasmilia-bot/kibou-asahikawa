@@ -834,6 +834,10 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
   gap: 24px;
 }
 
+.contact-facility-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
 .form-field { display: flex; flex-direction: column; gap: 8px; }
 
 .form-field.full { grid-column: 1 / -1; }
@@ -1033,6 +1037,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
   .footer-grid   { grid-template-columns: 1fr; gap: 32px; }
   .form-grid     { grid-template-columns: 1fr; }
   .form-field.full { grid-column: 1; }
+  .contact-facility-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {

@@ -113,7 +113,13 @@ def extract_title(html_content: str) -> str:
 def extract_excerpt(html_content: str, length: int = 120) -> str:
     text = re.sub(r"<[^>]+>", "", html_content)
     text = re.sub(r"\s+", " ", text).strip()
-    return text[:length] + "…" if len(text) > length else text
+    if len(text) <= length:
+        return text
+    cut = text[:length]
+    boundary = max(cut.rfind("。"), cut.rfind("、"))
+    if boundary > length * 0.5:
+        cut = cut[:boundary + 1]
+    return cut + "…"
 
 
 def make_slug(date_str: str, keyword: str) -> str:
@@ -157,7 +163,7 @@ def build_html_page(title: str, body_html: str, date_display: str,
     body = re.sub(r"<h1[^>]*>.*?</h1>", "", body_html, flags=re.DOTALL).strip()
 
     canonical_url = f"https://kibou.online/posts/{slug}.html" if slug else ""
-    desc = excerpt[:120] if excerpt else f"{title}｜合同会社きぼうの介護コラム"
+    desc = excerpt if excerpt else f"{title}｜合同会社きぼうの介護コラム"
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -284,9 +290,13 @@ def build_html_page(title: str, body_html: str, date_display: str,
           <div class="footer-logo">合同会社<span>きぼう</span></div>
           <div class="footer-company">旭川市 住宅型有料老人ホーム</div>
           <address class="footer-address" style="font-style:normal;">
-            北海道旭川市<br>
+            <strong style="color:#fff;">うらら</strong><br>
+            北海道旭川市春光町12番地2（〒070-0902）<br>
             TEL：0166-54-8388<br>
-            受付時間：9:00〜18:00
+            <strong style="color:#fff;display:inline-block;margin-top:8px;">セラヴィ豊岡</strong><br>
+            北海道旭川市豊岡4条3丁目4-12（〒078-8234）<br>
+            TEL：0166-73-7395<br>
+            <span style="display:inline-block;margin-top:8px;">受付時間：9:00〜18:00</span>
           </address>
         </div>
         <div>

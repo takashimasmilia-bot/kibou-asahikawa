@@ -18,3 +18,13 @@
 
 - 2026-07-10に誤って有効化・`kibou.online`をカスタムドメイン設定してしまったが、本番はCloudflare Pagesのため不要と判明。カスタムドメイン設定は解除済み。
 - `https://takashimasmilia-bot.github.io/kibou-asahikawa/` として引き続き有効だが、実運用では使用しない（重複ミラー）。
+
+## 残作業（2026-07-10時点、未着手）
+
+サイトコード・DNS周りは`kibou-asahikawa.com`基準に統一済みだが、Google側の外部設定がまだ`kibou.online`のままになっている可能性が高い。ログインが必要なため対応はユーザー本人作業。
+
+- [ ] **Googleビジネスプロフィール**：うらら・セラヴィ豊岡それぞれのプロフィールで、ウェブサイトURLを`kibou.online`→`kibou-asahikawa.com`に変更
+- [ ] **Google Search Console**：
+  - [ ] `https://kibou-asahikawa.com/` の新規プロパティを登録・所有権確認
+  - [ ] サイトマップ `https://kibou-asahikawa.com/sitemap.xml` を送信
+  - [ ] `kibou.online`のプロパティが登録済みの場合、8月のドメイン失効を踏まえて移行するか放置するか判断（アドレス変更ツールを使うか、単に放置でも実害は小さい）

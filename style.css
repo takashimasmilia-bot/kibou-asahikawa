@@ -765,6 +765,19 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
 .badge-orange { background: var(--accent-light);    color: #a06010; }
 .badge-beige  { background: var(--beige-dark);      color: var(--text-muted); }
 
+.vacancy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 900;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(232, 168, 64, 0.4);
+}
+
 /* ============================================
    Post body
 ============================================ */

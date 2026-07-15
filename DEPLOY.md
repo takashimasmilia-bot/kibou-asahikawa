@@ -23,7 +23,7 @@
 
 サイトコード・DNS周りは`kibou-asahikawa.com`基準に統一済みだが、Google側の外部設定がまだ`kibou.online`のままになっている可能性が高い。ログインが必要なため対応はユーザー本人作業。
 
-- [ ] **Googleビジネスプロフィール**：うらら・セラヴィ豊岡それぞれのプロフィールで、ウェブサイトURLを`kibou.online`→`kibou-asahikawa.com`に変更
+- [x] **Googleビジネスプロフィール**：うらら・セラヴィ豊岡それぞれのプロフィールで、ウェブサイトURLを`kibou.online`→`kibou-asahikawa.com`に変更（2026-07-15完了）
 - [ ] **Google Search Console**：
   - [ ] `https://kibou-asahikawa.com/` の新規プロパティを登録・所有権確認
   - [ ] サイトマップ `https://kibou-asahikawa.com/sitemap.xml` を送信

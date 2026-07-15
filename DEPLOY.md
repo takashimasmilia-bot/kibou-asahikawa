@@ -24,7 +24,7 @@
 サイトコード・DNS周りは`kibou-asahikawa.com`基準に統一済みだが、Google側の外部設定がまだ`kibou.online`のままになっている可能性が高い。ログインが必要なため対応はユーザー本人作業。
 
 - [x] **Googleビジネスプロフィール**：うらら・セラヴィ豊岡それぞれのプロフィールで、ウェブサイトURLを`kibou.online`→`kibou-asahikawa.com`に変更（2026-07-15完了）
-- [ ] **Google Search Console**：
-  - [ ] `https://kibou-asahikawa.com/` の新規プロパティを登録・所有権確認
-  - [ ] サイトマップ `https://kibou-asahikawa.com/sitemap.xml` を送信
-  - [ ] `kibou.online`のプロパティが登録済みの場合、8月のドメイン失効を踏まえて移行するか放置するか判断（アドレス変更ツールを使うか、単に放置でも実害は小さい）
+- [x] **Google Search Console**：（2026-07-15完了）
+  - [x] `https://kibou-asahikawa.com/` の新規プロパティを登録・所有権確認（HTMLタグ方式）
+  - [x] サイトマップ `https://kibou-asahikawa.com/sitemap.xml` を送信（送信直後は「取得できませんでした」と表示されるが、sitemap.xml自体は200 OKで正常配信を確認済み。数時間〜1日で解消見込み）
+  - [x] `kibou.online`のプロパティ：登録済みだが対応不要と判断。8月にWix契約終了でドメイン自体が失効する予定のため、Search Console側は放置し、失効タイミングで自然消滅させる方針（ユーザー確認済み）

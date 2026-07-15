@@ -405,8 +405,22 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
 
 .hero-tel-label { font-size: 0.82rem; color: var(--text-muted); }
 
+.hero-tel-group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hero-tel-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-tel-facility { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+
 .hero-tel-number {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: var(--primary);
   letter-spacing: 0.04em;

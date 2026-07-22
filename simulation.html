@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="旭川市の住宅型有料老人ホーム「うらら」「セラヴィ豊岡」の入居費用シミュレーター。居室タイプと要介護度を選ぶだけで、月々の費用目安をその場で確認できます。">
+  <title>入居費用シミュレーター | 合同会社きぼう（旭川）</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="入居費用シミュレーター｜合同会社きぼう（旭川）">
+  <meta property="og:description" content="うらら・セラヴィ豊岡の居室タイプと要介護度を選ぶだけで、月々の費用目安をその場で確認できます。">
+  <meta property="og:url" content="https://kibou-asahikawa.com/simulation">
+  <meta property="og:site_name" content="合同会社きぼう">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="canonical" href="https://kibou-asahikawa.com/simulation">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="合同会社きぼう トップへ">
+        <span class="logo-sub">旭川市 住宅型有料老人ホーム</span>
+        <span class="logo-main">合同会社<span>きぼう</span></span>
+      </a>
+      <nav class="nav" aria-label="グローバルナビゲーション">
+        <ul class="nav-links">
+          <li><a href="/"           class="nav-link">トップ</a></li>
+          <li><a href="/urara"      class="nav-link">うらら</a></li>
+          <li><a href="/celavie"    class="nav-link">セラヴィ豊岡</a></li>
+          <li><a href="/blog"       class="nav-link">ブログ</a></li>
+          <li><a href="/simulation" class="nav-link active">費用シミュレーター</a></li>
+          <li><a href="/recruit"    class="nav-link">求人</a></li>
+          <li><a href="/contact"    class="nav-link">お問い合わせ</a></li>
+        </ul>
+        <a href="/contact" class="btn btn-primary nav-cta">入居相談（無料）</a>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="/"           class="mobile-nav-link">🏠 トップ</a></li>
+      <li><a href="/urara"      class="mobile-nav-link">🌸 うらら</a></li>
+      <li><a href="/celavie"    class="mobile-nav-link">🌿 セラヴィ豊岡</a></li>
+      <li><a href="/blog"       class="mobile-nav-link">📝 ブログ</a></li>
+      <li><a href="/simulation" class="mobile-nav-link">💰 費用シミュレーター</a></li>
+      <li><a href="/recruit"    class="mobile-nav-link">💼 求人</a></li>
+      <li><a href="/contact"    class="mobile-nav-link">✉️ お問い合わせ</a></li>
+    </ul>
+    <a href="/contact" class="btn btn-primary mobile-nav-cta">入居相談（無料）</a>
+  </div>
+
+  <main>
+
+    <div class="notice-bar">
+      <div class="notice-bar-inner">
+        <span class="notice-bar-text">📢 表示される金額はすべて目安です。正確な費用は入居相談時にご説明します。</span>
+        <a href="/contact" class="notice-bar-cta">お問い合わせ →</a>
+      </div>
+    </div>
+
+    <div class="page-hero">
+      <div class="page-hero-content">
+        <p class="page-hero-breadcrumb"><a href="/">トップ</a> &gt; 入居費用シミュレーター</p>
+        <h1 class="page-hero-title">💰 入居費用シミュレーター</h1>
+        <p class="page-hero-subtitle">施設・居室タイプ・要介護度を選ぶだけで、月々の費用目安がその場でわかります。</p>
+      </div>
+    </div>
+
+    <!-- シミュレーター本体 -->
+    <section class="section bg-white">
+      <div class="container">
+        <div style="max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:24px;" class="fade-in">
+
+          <!-- STEP1 施設選択 -->
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);border:2px solid var(--border);">
+            <p class="section-label">STEP 1</p>
+            <h2 style="font-size:1.15rem;font-weight:900;margin-bottom:16px;">施設を選ぶ</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" id="facilityToggle">
+              <button type="button" class="sim-facility-btn active" data-facility="urara">
+                <span style="font-size:1.6rem;">🌸</span>
+                <span style="font-weight:900;">うらら</span>
+              </button>
+              <button type="button" class="sim-facility-btn" data-facility="celavie">
+                <span style="font-size:1.6rem;">🌿</span>
+                <span style="font-weight:900;">セラヴィ豊岡</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP2 居室タイプ -->
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);border:2px solid var(--border);">
+            <p class="section-label">STEP 2</p>
+            <h2 style="font-size:1.15rem;font-weight:900;margin-bottom:16px;">居室タイプを選ぶ</h2>
+            <div class="form-field">
+              <label class="form-label" for="roomSelect">居室タイプ</label>
+              <select class="form-select" id="roomSelect"></select>
+            </div>
+            <div id="heatingNote" style="font-size:0.82rem;color:var(--text-muted);margin-top:12px;display:none;"></div>
+            <div id="heatingToggleWrap" style="margin-top:16px;display:none;">
+              <label class="form-label" for="heatingSelect">お住まいの期間</label>
+              <select class="form-select" id="heatingSelect">
+                <option value="0">6月〜9月（暖房費なし）</option>
+                <option value="1">10月〜5月（暖房費あり）</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- STEP3 介護保険 -->
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);border:2px solid var(--border);">
+            <p class="section-label">STEP 3</p>
+            <h2 style="font-size:1.15rem;font-weight:900;margin-bottom:6px;">介護保険サービスの自己負担目安</h2>
+            <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:20px;line-height:1.7;">
+              住宅型有料老人ホームでは、施設の月額費用とは別に、訪問介護・デイサービスなどの介護保険サービスを個別にご契約いただきます。
+              ここでは「要介護度ごとの支給限度基準額を上限までフル利用した場合」を前提に、自己負担額の<strong>目安の上限</strong>を計算します。
+              実際のご利用額は、ケアマネジャーが作成するケアプランの内容によって、これより少なくなるのが一般的です。
+            </p>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="careLevelSelect">要介護度</label>
+                <select class="form-select" id="careLevelSelect"></select>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="copaySelect">自己負担割合</label>
+                <select class="form-select" id="copaySelect">
+                  <option value="0.1">1割</option>
+                  <option value="0.2">2割</option>
+                  <option value="0.3">3割</option>
+                </select>
+              </div>
+            </div>
+            <p style="font-size:0.78rem;color:var(--text-muted);margin-top:16px;">
+              ※ 支給限度基準額は全国共通の基準（1単位＝10円）で計算しています。旭川市は地域区分「その他」に該当し、単位単価の地域加算がないためです（サービスの種類により若干の差が生じる場合があります）。
+            </p>
+          </div>
+
+          <!-- 結果 -->
+          <div style="background:var(--primary-light);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-md);" id="resultBox">
+            <p class="section-label">RESULT</p>
+            <h2 style="font-size:1.15rem;font-weight:900;margin-bottom:20px;" id="resultRoomLabel">費用の目安</h2>
+
+            <table class="recruit-table" style="background:var(--white);border-radius:var(--radius-md);overflow:hidden;">
+              <tbody id="resultTableBody"></tbody>
+              <tfoot>
+                <tr>
+                  <th style="background:var(--primary);color:var(--white);">施設費用 月額</th>
+                  <td style="font-weight:900;font-size:1.05rem;" id="resultFacilityTotal">-</td>
+                </tr>
+                <tr>
+                  <th>介護保険自己負担 目安（上限）</th>
+                  <td id="resultCareCopay">-</td>
+                </tr>
+                <tr>
+                  <th style="background:var(--primary-dark);color:var(--white);">合計 月額目安</th>
+                  <td style="font-weight:900;font-size:1.3rem;color:var(--primary-dark);" id="resultGrandTotal">-</td>
+                </tr>
+              </tfoot>
+            </table>
+
+            <div id="initialFeeNote" style="margin-top:16px;font-size:0.88rem;color:var(--text-muted);background:var(--white);border-radius:var(--radius-md);padding:16px 20px;display:none;"></div>
+
+            <p style="font-size:0.78rem;color:var(--text-muted);margin-top:16px;line-height:1.7;">
+              ※ この結果はあくまで目安です。実際の費用は個々のケアプランやご契約内容により異なります。正確な金額は入居相談にてご確認ください。
+            </p>
+
+            <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;">
+              <a href="/contact" class="btn btn-primary btn-lg">📩 この内容で相談してみる</a>
+              <a href="#" id="resultTelLink" class="btn btn-secondary btn-lg">📞 電話で相談する</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 代表の別事業 -->
+    <section class="section bg-beige">
+      <div class="container">
+        <div style="max-width:760px;margin:0 auto;background:var(--white);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-sm);" class="fade-in">
+          <p class="section-label">RELATED BUSINESS</p>
+          <h2 style="font-size:1.35rem;font-weight:900;margin-bottom:16px;">ご自宅のことも、あわせてご相談ください（不動産：ハウスドゥ澄川）</h2>
+          <p style="line-height:1.9;color:var(--text-muted);margin-bottom:24px;">
+            入居に合わせて、空き家になるご自宅をどうするか悩まれるご家族は少なくありません。
+            代表の髙嶋は旭川での介護施設運営と並行して、北海道札幌市南区で不動産業（ハウスドゥ澄川 / 合同会社スミリア）も営んでおり、
+            <strong>入居のご相談とあわせてご自宅の売却・活用についてもワンストップでご相談いただけます。</strong>
+          </p>
+          <a href="https://smilia.jp/" target="_blank" rel="noopener" class="btn btn-secondary">
+            ハウスドゥ澄川（合同会社スミリア）のサイトへ →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">合同会社<span>きぼう</span></div>
+          <div class="footer-company">旭川市 住宅型有料老人ホーム</div>
+          <address class="footer-address" style="font-style:normal;">
+            <strong style="color:#fff;">うらら</strong><br>
+            北海道旭川市春光町12番地2（〒070-0902）<br>
+            TEL：0166-54-8388<br>
+            <strong style="color:#fff;display:inline-block;margin-top:8px;">セラヴィ豊岡</strong><br>
+            北海道旭川市豊岡4条3丁目4-12（〒078-8234）<br>
+            TEL：0166-73-7395<br>
+            <span style="display:inline-block;margin-top:8px;">受付時間：9:00〜18:00</span>
+          </address>
+        </div>
+        <div>
+          <div class="footer-nav-title">サイトマップ</div>
+          <ul class="footer-nav-links">
+            <li><a href="/"           class="footer-nav-link">トップページ</a></li>
+            <li><a href="/urara"      class="footer-nav-link">うらら</a></li>
+            <li><a href="/celavie"    class="footer-nav-link">セラヴィ豊岡</a></li>
+            <li><a href="/blog"       class="footer-nav-link">ブログ</a></li>
+            <li><a href="/simulation" class="footer-nav-link">費用シミュレーター</a></li>
+            <li><a href="/recruit"    class="footer-nav-link">求人</a></li>
+            <li><a href="/contact"    class="footer-nav-link">お問い合わせ</a></li>
+          </ul>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">代表の別事業</div>
+            <a href="https://smilia.jp/" target="_blank" rel="noopener" style="font-size:0.82rem;color:rgba(255,255,255,0.6);">
+              ハウスドゥ澄川（合同会社スミリア）→
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 合同会社きぼう All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .sim-facility-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 20px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .sim-facility-btn:hover { border-color: var(--primary); }
+    .sim-facility-btn.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+    #resultTableBody th, #resultTableBody td,
+    #resultBox tfoot th, #resultBox tfoot td {
+      font-size: 0.9rem;
+    }
+  </style>
+
+  <script src="script.js"></script>
+  <script>
+    'use strict';
+
+    const FACILITIES = {
+      urara: {
+        name: 'うらら',
+        tel: '0166-54-8388',
+        telHref: 'tel:0166548388',
+        initialFee: null,
+        rooms: [
+          { id: 'u-single-summer', label: '個室（夏季：5月〜9月）', items: [['家賃相当額',28000],['食費',39000],['管理費',20000],['水道光熱費',13000]], total: 100000 },
+          { id: 'u-single-winter', label: '個室（冬季：10月〜4月・暖房費込み）', items: [['家賃相当額',28000],['食費',39000],['管理費',20000],['水道光熱費',13000],['暖房費',13000]], total: 113000 },
+          { id: 'u-couple-summer', label: '夫婦室（夏季：5月〜9月）', items: [['家賃相当額',46000],['食費',78000],['管理費',40000],['水道光熱費',21000]], total: 185000 },
+          { id: 'u-couple-winter', label: '夫婦室（冬季：10月〜4月・暖房費込み）', items: [['家賃相当額',46000],['食費',78000],['管理費',40000],['水道光熱費',21000],['暖房費',26000]], total: 211000 },
+        ]
+      },
+      celavie: {
+        name: 'セラヴィ豊岡',
+        tel: '0166-73-7395',
+        telHref: 'tel:0166737395',
+        initialFee: { single: 100000, couple: 150000 },
+        heatingNote: '暖房費（10月〜5月のみ加算）：個室 18,000円／2人部屋 26,000円',
+        rooms: [
+          { id: 'c-a', label: 'Aタイプ（個室・14室）', type: 'single', items: [['家賃',60000],['食事',40000],['水道光熱費',23000],['管理費',40000]], total: 163000, heating: 18000 },
+          { id: 'c-b', label: 'Bタイプ（2人部屋・1室）', type: 'couple', items: [['家賃',85000],['食事',80000],['水道光熱費',46000],['管理費',50000]], total: 261000, heating: 26000 },
+          { id: 'c-c', label: 'Cタイプ（2人部屋・1室）', type: 'couple', items: [['家賃',88000],['食事',80000],['水道光熱費',46000],['管理費',50000]], total: 264000, heating: 26000 },
+          { id: 'c-d', label: 'Dタイプ（2人部屋・2室）', type: 'couple', items: [['家賃',94000],['食事',80000],['水道光熱費',46000],['管理費',50000]], total: 270000, heating: 26000 },
+          { id: 'c-e', label: 'Eタイプ（2人部屋・2室）', type: 'couple', items: [['家賃',99000],['食事',80000],['水道光熱費',46000],['管理費',50000]], total: 275000, heating: 26000 },
+        ]
+      }
+    };
+
+    // 区分支給限度基準額（全国共通・単位）。1単位=10円で計算（旭川市は地域区分「その他」）。
+    const CARE_LEVELS = [
+      { id: 'none',     label: '認定なし（自立・介護保険サービス利用なし）', units: 0 },
+      { id: 'support1', label: '要支援1', units: 5032 },
+      { id: 'support2', label: '要支援2', units: 10531 },
+      { id: 'care1',    label: '要介護1', units: 16765 },
+      { id: 'care2',    label: '要介護2', units: 19705 },
+      { id: 'care3',    label: '要介護3', units: 27048 },
+      { id: 'care4',    label: '要介護4', units: 30938 },
+      { id: 'care5',    label: '要介護5', units: 36217 },
+    ];
+
+    const yen = n => '¥' + Math.round(n).toLocaleString('ja-JP');
+
+    let currentFacility = 'urara';
+
+    const facilityBtns = document.querySelectorAll('.sim-facility-btn');
+    const roomSelect = document.getElementById('roomSelect');
+    const heatingNote = document.getElementById('heatingNote');
+    const heatingToggleWrap = document.getElementById('heatingToggleWrap');
+    const heatingSelect = document.getElementById('heatingSelect');
+    const careLevelSelect = document.getElementById('careLevelSelect');
+    const copaySelect = document.getElementById('copaySelect');
+
+    CARE_LEVELS.forEach(level => {
+      const opt = document.createElement('option');
+      opt.value = level.id;
+      opt.textContent = level.label;
+      careLevelSelect.appendChild(opt);
+    });
+
+    function populateRooms() {
+      const facility = FACILITIES[currentFacility];
+      roomSelect.innerHTML = '';
+      facility.rooms.forEach(room => {
+        const opt = document.createElement('option');
+        opt.value = room.id;
+        opt.textContent = room.label;
+        roomSelect.appendChild(opt);
+      });
+
+      if (currentFacility === 'celavie') {
+        heatingNote.style.display = 'block';
+        heatingNote.textContent = facility.heatingNote;
+        heatingToggleWrap.style.display = 'block';
+      } else {
+        heatingNote.style.display = 'none';
+        heatingToggleWrap.style.display = 'none';
+      }
+      render();
+    }
+
+    facilityBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        facilityBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFacility = btn.dataset.facility;
+        populateRooms();
+      });
+    });
+
+    [roomSelect, heatingSelect, careLevelSelect, copaySelect].forEach(el => {
+      el.addEventListener('change', render);
+    });
+
+    function render() {
+      const facility = FACILITIES[currentFacility];
+      const room = facility.rooms.find(r => r.id === roomSelect.value) || facility.rooms[0];
+
+      let facilityTotal = room.total;
+      const items = room.items.slice();
+
+      if (currentFacility === 'celavie' && heatingSelect.value === '1') {
+        items.push(['暖房費（10月〜5月）', room.heating]);
+        facilityTotal += room.heating;
+      }
+
+      document.getElementById('resultRoomLabel').textContent = `${facility.name} ／ ${room.label} の費用目安`;
+
+      const tbody = document.getElementById('resultTableBody');
+      tbody.innerHTML = items.map(([label, val]) => `<tr><th>${label}</th><td>${yen(val)}</td></tr>`).join('');
+
+      document.getElementById('resultFacilityTotal').textContent = yen(facilityTotal);
+
+      const level = CARE_LEVELS.find(l => l.id === careLevelSelect.value) || CARE_LEVELS[0];
+      const ratio = parseFloat(copaySelect.value);
+      const copay = level.units * 10 * ratio;
+      document.getElementById('resultCareCopay').textContent = yen(copay) + '（上限目安）';
+
+      document.getElementById('resultGrandTotal').textContent = yen(facilityTotal + copay);
+
+      const initialFeeNote = document.getElementById('initialFeeNote');
+      if (facility.initialFee) {
+        const feeAmount = (currentFacility === 'celavie' && room.type === 'couple') ? facility.initialFee.couple : facility.initialFee.single;
+        initialFeeNote.style.display = 'block';
+        initialFeeNote.innerHTML = `<strong>入居時費用（権利金）：${yen(feeAmount)}</strong>　※ご退去時のお部屋のクリーニング代として使用します。上記の月額とは別に、入居時に一度お支払いいただきます。`;
+      } else {
+        initialFeeNote.style.display = 'block';
+        initialFeeNote.innerHTML = `${facility.name} は入居時の権利金・一時金はありません（月額費用のみです）。`;
+      }
+
+      const telLink = document.getElementById('resultTelLink');
+      telLink.href = facility.telHref;
+      telLink.textContent = `📞 ${facility.name} ${facility.tel}`;
+    }
+
+    populateRooms();
+  </script>
+</body>
+</html>

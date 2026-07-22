@@ -219,6 +219,7 @@ def build_html_page(title: str, body_html: str, date_display: str,
           <li><a href="/urara"   class="nav-link">うらら</a></li>
           <li><a href="/celavie" class="nav-link">セラヴィ豊岡</a></li>
           <li><a href="/blog"    class="nav-link active">ブログ</a></li>
+          <li><a href="/simulation" class="nav-link">費用シミュレーター</a></li>
           <li><a href="/recruit" class="nav-link">求人</a></li>
           <li><a href="/contact" class="nav-link">お問い合わせ</a></li>
         </ul>
@@ -235,6 +236,7 @@ def build_html_page(title: str, body_html: str, date_display: str,
       <li><a href="/urara"   class="mobile-nav-link">🌸 うらら</a></li>
       <li><a href="/celavie" class="mobile-nav-link">🌿 セラヴィ豊岡</a></li>
       <li><a href="/blog"    class="mobile-nav-link">📝 ブログ</a></li>
+      <li><a href="/simulation" class="mobile-nav-link">💰 費用シミュレーター</a></li>
       <li><a href="/recruit" class="mobile-nav-link">💼 求人</a></li>
       <li><a href="/contact" class="mobile-nav-link">✉️ お問い合わせ</a></li>
     </ul>
@@ -307,6 +309,7 @@ def build_html_page(title: str, body_html: str, date_display: str,
             <li><a href="/urara"   class="footer-nav-link">うらら</a></li>
             <li><a href="/celavie" class="footer-nav-link">セラヴィ豊岡</a></li>
             <li><a href="/blog"    class="footer-nav-link">ブログ</a></li>
+            <li><a href="/simulation" class="footer-nav-link">費用シミュレーター</a></li>
             <li><a href="/recruit" class="footer-nav-link">求人</a></li>
             <li><a href="/contact" class="footer-nav-link">お問い合わせ</a></li>
           </ul>
@@ -331,6 +334,7 @@ def update_sitemap(posts: list, base: Path, today_str: str = "") -> None:
         ("https://kibou-asahikawa.com/celavie", today,        "monthly", "0.9"),
         ("https://kibou-asahikawa.com/about",   "2026-07-05", "monthly", "0.7"),
         ("https://kibou-asahikawa.com/blog",    today,        "weekly",  "0.7"),
+        ("https://kibou-asahikawa.com/simulation", today,     "monthly", "0.8"),
         ("https://kibou-asahikawa.com/recruit", "2026-07-05", "monthly", "0.6"),
         ("https://kibou-asahikawa.com/contact", "2026-07-05", "monthly", "0.6"),
     ]

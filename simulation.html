@@ -121,21 +121,9 @@
               住宅型有料老人ホームでは、施設の月額費用とは別に、訪問介護・デイサービスなどの介護保険サービスを個別にご契約いただきます。
               ここでは「要介護度ごとの支給限度基準額を上限までフル利用した場合」を前提に、自己負担額の<strong>目安の上限</strong>を計算します。
               実際のご利用額は、ケアマネジャーが作成するケアプランの内容によって、これより少なくなるのが一般的です。
+              <span id="couplePersonNote" style="display:none;">夫婦室・2人部屋の場合はお二人分をそれぞれ計算し、合算して表示します。</span>
             </p>
-            <div class="form-grid">
-              <div class="form-field">
-                <label class="form-label" for="careLevelSelect">要介護度</label>
-                <select class="form-select" id="careLevelSelect"></select>
-              </div>
-              <div class="form-field">
-                <label class="form-label" for="copaySelect">自己負担割合</label>
-                <select class="form-select" id="copaySelect">
-                  <option value="0.1">1割</option>
-                  <option value="0.2">2割</option>
-                  <option value="0.3">3割</option>
-                </select>
-              </div>
-            </div>
+            <div id="carePersonsContainer" style="display:flex;flex-direction:column;gap:20px;"></div>
             <p style="font-size:0.78rem;color:var(--text-muted);margin-top:16px;">
               ※ 支給限度基準額は全国共通の基準（1単位＝10円）で計算しています。旭川市は地域区分「その他」に該当し、単位単価の地域加算がないためです（サービスの種類により若干の差が生じる場合があります）。
             </p>
@@ -148,13 +136,14 @@
 
             <table class="recruit-table" style="background:var(--white);border-radius:var(--radius-md);overflow:hidden;">
               <tbody id="resultTableBody"></tbody>
+              <tbody id="resultCareBody"></tbody>
               <tfoot>
                 <tr>
                   <th style="background:var(--primary);color:var(--white);">施設費用 月額</th>
                   <td style="font-weight:900;font-size:1.05rem;" id="resultFacilityTotal">-</td>
                 </tr>
                 <tr>
-                  <th>介護保険自己負担 目安（上限）</th>
+                  <th>介護保険自己負担 合計（上限目安）</th>
                   <td id="resultCareCopay">-</td>
                 </tr>
                 <tr>
@@ -278,10 +267,10 @@
         telHref: 'tel:0166548388',
         initialFee: null,
         rooms: [
-          { id: 'u-single-summer', label: '個室（夏季：5月〜9月）', items: [['家賃相当額',28000],['食費',39000],['管理費',20000],['水道光熱費',13000]], total: 100000 },
-          { id: 'u-single-winter', label: '個室（冬季：10月〜4月・暖房費込み）', items: [['家賃相当額',28000],['食費',39000],['管理費',20000],['水道光熱費',13000],['暖房費',13000]], total: 113000 },
-          { id: 'u-couple-summer', label: '夫婦室（夏季：5月〜9月）', items: [['家賃相当額',46000],['食費',78000],['管理費',40000],['水道光熱費',21000]], total: 185000 },
-          { id: 'u-couple-winter', label: '夫婦室（冬季：10月〜4月・暖房費込み）', items: [['家賃相当額',46000],['食費',78000],['管理費',40000],['水道光熱費',21000],['暖房費',26000]], total: 211000 },
+          { id: 'u-single-summer', label: '個室（夏季：5月〜9月）', type: 'single', items: [['家賃相当額',28000],['食費',39000],['管理費',20000],['水道光熱費',13000]], total: 100000 },
+          { id: 'u-single-winter', label: '個室（冬季：10月〜4月・暖房費込み）', type: 'single', items: [['家賃相当額',28000],['食費',39000],['管理費',20000],['水道光熱費',13000],['暖房費',13000]], total: 113000 },
+          { id: 'u-couple-summer', label: '夫婦室（夏季：5月〜9月）', type: 'couple', items: [['家賃相当額',46000],['食費',78000],['管理費',40000],['水道光熱費',21000]], total: 185000 },
+          { id: 'u-couple-winter', label: '夫婦室（冬季：10月〜4月・暖房費込み）', type: 'couple', items: [['家賃相当額',46000],['食費',78000],['管理費',40000],['水道光熱費',21000],['暖房費',26000]], total: 211000 },
         ]
       },
       celavie: {
@@ -321,15 +310,68 @@
     const heatingNote = document.getElementById('heatingNote');
     const heatingToggleWrap = document.getElementById('heatingToggleWrap');
     const heatingSelect = document.getElementById('heatingSelect');
-    const careLevelSelect = document.getElementById('careLevelSelect');
-    const copaySelect = document.getElementById('copaySelect');
+    const carePersonsContainer = document.getElementById('carePersonsContainer');
+    const couplePersonNote = document.getElementById('couplePersonNote');
 
-    CARE_LEVELS.forEach(level => {
-      const opt = document.createElement('option');
-      opt.value = level.id;
-      opt.textContent = level.label;
-      careLevelSelect.appendChild(opt);
-    });
+    function personBlockHTML(idx, label) {
+      return `
+        <div class="care-person-block" data-idx="${idx}">
+          <p style="font-weight:700;font-size:0.88rem;margin-bottom:10px;color:var(--primary-dark);">${label}</p>
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="form-label" for="careLevelSelect${idx}">要介護度</label>
+              <select class="form-select care-level-select" id="careLevelSelect${idx}" data-idx="${idx}"></select>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="copaySelect${idx}">自己負担割合</label>
+              <select class="form-select care-copay-select" id="copaySelect${idx}" data-idx="${idx}">
+                <option value="0.1">1割</option>
+                <option value="0.2">2割</option>
+                <option value="0.3">3割</option>
+              </select>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderCarePersons(count) {
+      const prevLevels = [...document.querySelectorAll('.care-level-select')].map(s => s.value);
+      const prevRatios = [...document.querySelectorAll('.care-copay-select')].map(s => s.value);
+
+      const labels = count === 2
+        ? ['お一人目（ご本人）', 'お二人目（配偶者様・ご家族様）']
+        : ['ご本人'];
+
+      couplePersonNote.style.display = count === 2 ? 'inline' : 'none';
+      carePersonsContainer.innerHTML = labels.map((l, i) => personBlockHTML(i, l)).join('');
+
+      labels.forEach((_, i) => {
+        const levelSel = document.getElementById(`careLevelSelect${i}`);
+        CARE_LEVELS.forEach(level => {
+          const opt = document.createElement('option');
+          opt.value = level.id;
+          opt.textContent = level.label;
+          levelSel.appendChild(opt);
+        });
+        if (prevLevels[i]) levelSel.value = prevLevels[i];
+        levelSel.addEventListener('change', render);
+
+        const copaySel = document.getElementById(`copaySelect${i}`);
+        if (prevRatios[i]) copaySel.value = prevRatios[i];
+        copaySel.addEventListener('change', render);
+      });
+    }
+
+    function currentRoom() {
+      const facility = FACILITIES[currentFacility];
+      return facility.rooms.find(r => r.id === roomSelect.value) || facility.rooms[0];
+    }
+
+    function onRoomChange() {
+      const room = currentRoom();
+      renderCarePersons(room.type === 'couple' ? 2 : 1);
+      render();
+    }
 
     function populateRooms() {
       const facility = FACILITIES[currentFacility];
@@ -349,7 +391,7 @@
         heatingNote.style.display = 'none';
         heatingToggleWrap.style.display = 'none';
       }
-      render();
+      onRoomChange();
     }
 
     facilityBtns.forEach(btn => {
@@ -361,13 +403,12 @@
       });
     });
 
-    [roomSelect, heatingSelect, careLevelSelect, copaySelect].forEach(el => {
-      el.addEventListener('change', render);
-    });
+    roomSelect.addEventListener('change', onRoomChange);
+    heatingSelect.addEventListener('change', render);
 
     function render() {
       const facility = FACILITIES[currentFacility];
-      const room = facility.rooms.find(r => r.id === roomSelect.value) || facility.rooms[0];
+      const room = currentRoom();
 
       let facilityTotal = room.total;
       const items = room.items.slice();
@@ -384,12 +425,27 @@
 
       document.getElementById('resultFacilityTotal').textContent = yen(facilityTotal);
 
-      const level = CARE_LEVELS.find(l => l.id === careLevelSelect.value) || CARE_LEVELS[0];
-      const ratio = parseFloat(copaySelect.value);
-      const copay = level.units * 10 * ratio;
-      document.getElementById('resultCareCopay').textContent = yen(copay) + '（上限目安）';
+      const personBlocks = document.querySelectorAll('.care-person-block');
+      const careBody = document.getElementById('resultCareBody');
+      let totalCopay = 0;
+      const careRows = [];
+      personBlocks.forEach((block, i) => {
+        const levelSel = document.getElementById(`careLevelSelect${i}`);
+        const copaySel = document.getElementById(`copaySelect${i}`);
+        const level = CARE_LEVELS.find(l => l.id === levelSel.value) || CARE_LEVELS[0];
+        const ratio = parseFloat(copaySel.value);
+        const copay = level.units * 10 * ratio;
+        totalCopay += copay;
+        const rowLabel = personBlocks.length === 2
+          ? `自己負担目安（${i === 0 ? 'お一人目' : 'お二人目'}・${level.label}）`
+          : `自己負担目安（${level.label}）`;
+        careRows.push(`<tr><th>${rowLabel}</th><td>${yen(copay)}</td></tr>`);
+      });
+      careBody.innerHTML = careRows.join('');
 
-      document.getElementById('resultGrandTotal').textContent = yen(facilityTotal + copay);
+      document.getElementById('resultCareCopay').textContent = yen(totalCopay) + '（上限目安）';
+
+      document.getElementById('resultGrandTotal').textContent = yen(facilityTotal + totalCopay);
 
       const initialFeeNote = document.getElementById('initialFeeNote');
       if (facility.initialFee) {

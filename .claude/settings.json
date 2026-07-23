@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch)",
+      "PowerShell(Get-ChildItem *)",
+      "mcp__obsidian__vault_read",
+      "mcp__obsidian__search_simple",
+      "mcp__obsidian__vault_get_document_map"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"c:/Users/hiron/kibou-online/.claude/hooks/obsidian-mirror-reminder.sh\"",
+            "statusMessage": "チャット終了の合図を確認中..."
+          }
+        ]
+      }
+    ]
+  }
+}

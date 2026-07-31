@@ -133,6 +133,11 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
   white-space: nowrap;
 }
 
+.btn-wrap {
+  white-space: normal;
+  text-align: center;
+}
+
 .btn-primary {
   background: var(--primary);
   color: var(--white);
@@ -606,6 +611,12 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
   gap: 28px;
 }
 
+.feature-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
 .feature-card {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -905,6 +916,20 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
   grid-template-columns: 1fr 1fr;
 }
 
+.contact-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.about-profile-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
 .form-field { display: flex; flex-direction: column; gap: 8px; }
 
 .form-field.full { grid-column: 1 / -1; }
@@ -1100,11 +1125,13 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
 
   .facility-grid { grid-template-columns: 1fr; }
   .feature-grid  { grid-template-columns: 1fr 1fr; }
+  .feature-grid-2 { grid-template-columns: 1fr 1fr; }
   .blog-grid     { grid-template-columns: 1fr 1fr; }
   .footer-grid   { grid-template-columns: 1fr; gap: 32px; }
   .form-grid     { grid-template-columns: 1fr; }
   .form-field.full { grid-column: 1; }
   .contact-facility-grid { grid-template-columns: 1fr; }
+  .contact-intro-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
@@ -1112,7 +1139,10 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.4; font-weight: 700; }
   .section { padding: 56px 0; }
   .section-title { font-size: 1.6rem; }
   .feature-grid { grid-template-columns: 1fr; }
+  .feature-grid-2 { grid-template-columns: 1fr; }
   .blog-grid    { grid-template-columns: 1fr; }
+  .contact-intro-grid { grid-template-columns: 1fr; }
+  .about-profile-grid { grid-template-columns: 1fr; justify-items: center; }
   .hero-stat-cards { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
   .recruit-table th { width: 120px; }

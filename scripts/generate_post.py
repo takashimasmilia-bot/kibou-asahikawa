@@ -71,7 +71,7 @@ def get_today_topic(posts_json_path: Path) -> dict:
 
 def generate_article(topic: dict, client: anthropic.Anthropic) -> str:
     prompt = f"""あなたは北海道旭川市で住宅型有料老人ホーム「うらら」「セラヴィ豊岡」を運営する「合同会社きぼう」のブログライターです。
-代表の髙嶋裕紀は不動産業（ハウスドゥ澄川 / 合同会社スミリア）も営んでおり、介護と不動産のワンストップ相談が特徴です。
+代表の髙嶋裕紀は不動産業（SMILIA（スミリア不動産）/ 合同会社スミリア）も営んでおり、介護と不動産のワンストップ相談が特徴です。
 
 ## テーマキーワード
 {topic['keyword']}
